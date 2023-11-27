@@ -34,7 +34,7 @@ There is always a space before and after the operator.
 
 
 ## Link to project
-[Free Code Camp - Ccientific Computing with python](https://www.freecodecamp.org/learn/scientific-computing-with-python/scientific-computing-with-python-projects/arithmetic-formatter)
+[Free Code Camp - Scientific Computing with python](https://www.freecodecamp.org/learn/scientific-computing-with-python/scientific-computing-with-python-projects/arithmetic-formatter)
 
 
 ## How to run the functions
