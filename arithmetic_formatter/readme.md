@@ -6,19 +6,21 @@ This is the first project in the "Scientific Coomputing with Python" course with
 ### Output with only a list as a parameter
 `arithmetic_arranger(["32 + 698", "3801 - 2", "45 + 43", "123 + 49"])`
 
+```
    32      3801      45      123
 + 698    -    2    + 43    +  49
 -----    ------    ----    -----
+```
 
 ### Ouput with list as the first paramater and True as the second parameter
 
 `arithmetic_arranger(["32 + 8", "1 - 3801", "9999 + 9999", "523 - 49"], True)`
-
+```
   32         1      9999      523
 +  8    - 3801    + 9999    -  49
 ----    ------    ------    -----
   40     -3800     19998      474
-
+```
 ## Rules for the project
 
     1. The list used for the parameter can contain a maximum of 5 items. For more items, display: "Error: Too many problems."
@@ -32,7 +34,7 @@ There is always a space before and after the operator.
 
 
 ## Link to project
-[title](https://www.freecodecamp.org/learn/scientific-computing-with-python/scientific-computing-with-python-projects/arithmetic-formatter)
+[Free Code Camp - Ccientific Computing with python](https://www.freecodecamp.org/learn/scientific-computing-with-python/scientific-computing-with-python-projects/arithmetic-formatter)
 
 
 ## How to run the functions
