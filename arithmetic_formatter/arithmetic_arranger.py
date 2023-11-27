@@ -117,6 +117,6 @@ def arithmetic_arranger(calculations: list, show_answer=False):
 
     print("    ".join(first_string_list))
     print("    ".join(second_string_list))
+    print("    ".join(sperator_string_list))
     if show_answer:
-        print("    ".join(sperator_string_list))
         print("    ".join(answer_string_list))
