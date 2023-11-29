@@ -38,7 +38,7 @@ There is always a space before and after the operator.
 
 
 ## How to run the functions
-Ensure the arithmetic_arranger.py file is in the same folder as the main.py folder.
-Run the main.py file. It imports the "validations" and "arithmetic_arranger" functions.
-Change the calculations list to different values to view different variations. Toggle the show_answer parameter in the arithmetic_arranger function between True and 
-False to view the output with and without the answers respectively.
+To use this project, chacge the values in the calculations list in the main.py file.
+Validations are automatically checked as part of every run.
+The test_module.py is provided by free code camp to test that the code runs as expected. 
+In order to run the tests, simple type pytest into the terminal, make sure you are in the correct directory. You should get 10 tests passing when running pytest.

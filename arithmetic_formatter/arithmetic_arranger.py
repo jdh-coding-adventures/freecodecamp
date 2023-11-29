@@ -1,3 +1,6 @@
+class TooManyCalculations(ValueError):
+    pass
+
 def add_first_op_spaces(value, max_len, position):
     
     spaces = (max_len - len(value)) + 2 # one for space and one for operator
@@ -56,8 +59,11 @@ def validations(calculations: list):
     """
     # ## VALIDATION
     # max 5 items in the list
+
+
     if len(calculations) > 5:
-        raise "Error: Too many problems."
+        #raise TooManyCalculations("Error: Too many problems.")
+        raise ValueError("Error: Too many problems.")
 
 
     # check for only + or - operators
@@ -68,55 +74,68 @@ def validations(calculations: list):
         elif "-" in calc:
             process_list.append([calc.split("-"), "-"])
         else:
-            raise "Error: Operator must be '+' or '-'"
+            raise ValueError("Error: Operator must be '+' or '-'.")
 
     # check operands only contain digits  
     for values in process_list:
         lst = [operand for operand in values[0] if not operand.strip().isdigit()]
         if lst:
-            raise "Error: Numbers must only contain digits."
+            raise ValueError("Error: Numbers must only contain digits.")
 
     # check operators are not longer than 4 digits
     for values in process_list:  
         lst = [operand for operand in values[0] if len(operand.strip()) > 4]
         if lst:
-            raise "Error: Numbers cannot be more than four digits."
+            raise ValueError("Error: Numbers cannot be more than four digits.")
 
 
 def arithmetic_arranger(calculations: list, show_answer=False):
 
-    combined_list = list()
+    try:
+        validations(calculations=calculations)
 
-    for calc in calculations:
-        temp_list = list()
+        combined_list = list()
 
-        string_list = calc.split(" ")
+        for calc in calculations:
+            temp_list = list()
 
-        temp_list.append(string_list[0])
-        temp_list.append(string_list[1])
-        temp_list.append(string_list[2])
-        temp_list.append(eval(calc))
+            string_list = calc.split(" ")
 
-        max_len, position = get_max(string_list)
-        temp_list.append(max_len)
-        temp_list.append(position)
-        combined_list.append(temp_list)
+            temp_list.append(string_list[0])
+            temp_list.append(string_list[1])
+            temp_list.append(string_list[2])
+            temp_list.append(eval(calc))
 
-    first_string_list = list()
-    second_string_list = list()
-    sperator_string_list = list()
-    answer_string_list = list()
+            max_len, position = get_max(string_list)
+            temp_list.append(max_len)
+            temp_list.append(position)
+            combined_list.append(temp_list)
 
-    for lst in combined_list:
+        first_string_list = list()
+        second_string_list = list()
+        sperator_string_list = list()
+        answer_string_list = list()
 
-        first_string_list.append(add_first_op_spaces(value=lst[0], max_len=lst[4], position=lst[-1]))
-        second_string_list.append(add_seconf_op_spaces(value=lst[2], operator=lst[1], max_len=lst[4], position=lst[-1]))
-        sperator_string_list.append("-"* len(add_seconf_op_spaces(value=lst[2], operator=lst[1], max_len=lst[4], position=lst[-1])))
-        answer_string_list.append(add_answer_spaces(len(add_seconf_op_spaces(value=lst[2], operator=lst[1], max_len=lst[4], position=lst[-1])),lst[3]))
+        for lst in combined_list:
+
+            first_string_list.append(add_first_op_spaces(value=lst[0], max_len=lst[4], position=lst[-1]))
+            second_string_list.append(add_seconf_op_spaces(value=lst[2], operator=lst[1], max_len=lst[4], position=lst[-1]))
+            sperator_string_list.append("-"* len(add_seconf_op_spaces(value=lst[2], operator=lst[1], max_len=lst[4], position=lst[-1])))
+            answer_string_list.append(add_answer_spaces(len(add_seconf_op_spaces(value=lst[2], operator=lst[1], max_len=lst[4], position=lst[-1])),lst[3]))
 
 
-    print("    ".join(first_string_list))
-    print("    ".join(second_string_list))
-    print("    ".join(sperator_string_list))
-    if show_answer:
-        print("    ".join(answer_string_list))
+        # print("    ".join(first_string_list)) 
+        # print("    ".join(second_string_list))
+        # print("    ".join(sperator_string_list))
+        # if show_answer:
+        #     print("    ".join(answer_string_list))
+
+        if show_answer:
+            result = "    ".join(first_string_list) + "\n" + "    ".join(second_string_list) + "\n" + "    ".join(sperator_string_list) + "\n" + "    ".join(answer_string_list)
+        else:
+            result = "    ".join(first_string_list) + "\n" + "    ".join(second_string_list) + "\n" + "    ".join(sperator_string_list)
+
+        return result
+
+    except ValueError as e:
+        return str(e)
