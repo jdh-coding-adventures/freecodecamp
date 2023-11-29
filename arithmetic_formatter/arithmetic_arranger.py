@@ -1,6 +1,3 @@
-class TooManyCalculations(ValueError):
-    pass
-
 def add_first_op_spaces(value, max_len, position):
     
     spaces = (max_len - len(value)) + 2 # one for space and one for operator
@@ -51,15 +48,9 @@ def get_max(vals:list):
 
 
 def validations(calculations: list):
-    # validations
-    """
-    assumpsions 
-        - there are only 2 operands per value
-        - there is a space between the operand and the operator
-    """
+
     # ## VALIDATION
     # max 5 items in the list
-
 
     if len(calculations) > 5:
         #raise TooManyCalculations("Error: Too many problems.")
@@ -122,13 +113,6 @@ def arithmetic_arranger(calculations: list, show_answer=False):
             second_string_list.append(add_seconf_op_spaces(value=lst[2], operator=lst[1], max_len=lst[4], position=lst[-1]))
             sperator_string_list.append("-"* len(add_seconf_op_spaces(value=lst[2], operator=lst[1], max_len=lst[4], position=lst[-1])))
             answer_string_list.append(add_answer_spaces(len(add_seconf_op_spaces(value=lst[2], operator=lst[1], max_len=lst[4], position=lst[-1])),lst[3]))
-
-
-        # print("    ".join(first_string_list)) 
-        # print("    ".join(second_string_list))
-        # print("    ".join(sperator_string_list))
-        # if show_answer:
-        #     print("    ".join(answer_string_list))
 
         if show_answer:
             result = "    ".join(first_string_list) + "\n" + "    ".join(second_string_list) + "\n" + "    ".join(sperator_string_list) + "\n" + "    ".join(answer_string_list)
