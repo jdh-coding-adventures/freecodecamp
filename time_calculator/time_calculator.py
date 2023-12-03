@@ -2,7 +2,6 @@ def add_time(start, duration, weekday=""):
 
     if weekday != "":
         weekday = weekday.lower()
-        # print(weekday)
 
     #process start
     start_list = start.split(" ")
@@ -27,13 +26,8 @@ def add_time(start, duration, weekday=""):
     duration_hours = int(duration_list[0])
     duration_minutes = int(duration_list[1])
 
-    # print("Duration time " + duration_list[0], duration_list[1])
-
     ## add minutes first
-    # print(f"start mins: {str(start_minutes)}, duration mins: {duration_minutes}")
     total_minutes = start_minutes + duration_minutes
-    # print(f"start mins: {str(start_minutes)}, duration mins: {duration_minutes}")
-    # print("total minutes = " + str(total_minutes))
     total_hours = start_hours
 
     if total_minutes >= 60:
@@ -67,8 +61,6 @@ def add_time(start, duration, weekday=""):
         weekdays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
         shuf_list = list()
 
-
-
         # dynamically set the index of the value passed in
         for i in range(7):
             if weekdays[i].lower() == weekday:
@@ -87,7 +79,6 @@ def add_time(start, duration, weekday=""):
             
         new_weekday_index = days_passed%7
         new_weekday = shuf_list[new_weekday_index]
-        # print(f"testing {new_weekday}....")
 
     if new_hour_time == 0:
         new_hour_string = "12"
@@ -99,10 +90,13 @@ def add_time(start, duration, weekday=""):
     else:
         total_minutes_string = str(total_minutes)
 
+
+    new_time = f"{new_hour_string}:{total_minutes_string} {day_half}" 
+
     if weekday != "":
-        new_time = f"{new_hour_string}:{total_minutes_string} {day_half}, {new_weekday} {days_passed_string}"
-    else:
-        new_time = f"{new_hour_string}:{total_minutes_string} {day_half} {days_passed_string}"
-    
-    
+        new_time += f", {new_weekday}"
+
+    if days_passed_string != "":
+        new_time += f" {days_passed_string}"
+ 
     return new_time
